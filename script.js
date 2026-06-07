@@ -1,471 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Shivam Giri — Portfolio</title>
-<link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@300;400;600;700&family=Cascadia+Code:wght@400;600&display=swap" rel="stylesheet">
-<style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-  :root {
-    --taskbar-h: 48px;
-    --win-border: #3a7bd5;
-    --win-title: linear-gradient(180deg, #4d9fe8 0%, #1a5fa8 60%, #1e4fa0 100%);
-    --win-bg: #f0f2f5;
-    --desktop-bg: #1d5c9e;
-    --accent: #3a7bd5;
-    --accent2: #e8a020;
-    --glass: rgba(255,255,255,0.12);
-    --taskbar-bg: linear-gradient(180deg, #1a4a8a 0%, #0f2d5c 100%);
-    --icon-label: #fff;
-    --text: #1a1a2e;
-    --text-muted: #555;
-    --font: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    --mono: 'Cascadia Code', 'Courier New', monospace;
-  }
-
-  html, body {
-    width: 100%; height: 100%;
-    font-family: var(--font);
-    overflow: hidden;
-    user-select: none;
-  }
-
-  /* ── DESKTOP ── */
-  #desktop {
-    width: 100%; height: calc(100vh - var(--taskbar-h));
-    background: var(--desktop-bg);
-    background-image:
-      radial-gradient(ellipse 80% 60% at 20% 30%, rgba(100,180,255,0.25) 0%, transparent 60%),
-      radial-gradient(ellipse 60% 80% at 80% 70%, rgba(30,60,140,0.5) 0%, transparent 60%),
-      url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-    position: relative;
-    overflow: hidden;
-  }
-
-  /* ── DESKTOP ICONS ── */
-  .desktop-icons {
-    position: absolute;
-    top: 16px; left: 16px;
-    display: flex; flex-direction: column; gap: 8px;
-  }
-
-  .icon {
-    display: flex; flex-direction: column; align-items: center;
-    width: 80px; cursor: pointer; padding: 6px 4px;
-    border-radius: 4px; gap: 4px;
-    transition: background 0.15s;
-  }
-  .icon:hover { background: rgba(255,255,255,0.15); }
-  .icon:active { background: rgba(255,255,255,0.25); }
-  .icon .ico {
-    width: 48px; height: 48px;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 32px; line-height: 1;
-  }
-  .icon span {
-    font-size: 11px; color: var(--icon-label);
-    text-align: center; text-shadow: 1px 1px 3px rgba(0,0,0,0.9);
-    line-height: 1.3;
-  }
-
-  /* ── TASKBAR ── */
-  #taskbar {
-    position: fixed; bottom: 0; left: 0; right: 0;
-    height: var(--taskbar-h);
-    background: var(--taskbar-bg);
-    border-top: 1px solid rgba(255,255,255,0.2);
-    display: flex; align-items: center;
-    padding: 0 6px; gap: 4px;
-    z-index: 9999;
-  }
-
-  #start-btn {
-    display: flex; align-items: center; gap: 6px;
-    background: linear-gradient(180deg, #4fa3e8 0%, #1a6bc7 50%, #0f4a9e 100%);
-    border: 1px solid rgba(255,255,255,0.3);
-    border-radius: 3px;
-    color: white; font-size: 13px; font-weight: 700;
-    padding: 4px 12px 4px 8px;
-    cursor: pointer; font-family: var(--font);
-    text-shadow: 0 1px 2px rgba(0,0,0,0.5);
-    transition: filter 0.1s;
-  }
-  #start-btn:hover { filter: brightness(1.15); }
-  #start-btn:active { filter: brightness(0.9); }
-  #start-btn .win-logo { font-size: 20px; }
-
-  .taskbar-divider {
-    width: 1px; height: 32px;
-    background: rgba(255,255,255,0.15); margin: 0 4px;
-  }
-
-  .taskbar-task {
-    display: flex; align-items: center; gap: 6px;
-    background: rgba(255,255,255,0.08);
-    border: 1px solid rgba(255,255,255,0.15);
-    border-radius: 3px;
-    color: white; font-size: 12px;
-    padding: 4px 10px;
-    cursor: pointer; min-width: 120px; max-width: 160px;
-    transition: background 0.1s;
-    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
-  }
-  .taskbar-task:hover { background: rgba(255,255,255,0.18); }
-  .taskbar-task.active { background: rgba(255,255,255,0.25); border-color: rgba(255,255,255,0.4); }
-
-  #taskbar-clock {
-    margin-left: auto;
-    color: white; font-size: 11px; text-align: center;
-    padding: 0 12px; line-height: 1.5;
-    background: rgba(0,0,0,0.2);
-    border-left: 1px solid rgba(255,255,255,0.1);
-    height: 100%; display: flex; align-items: center; justify-content: center;
-    flex-direction: column;
-  }
-
-  /* ── WINDOWS ── */
-  .win {
-    position: absolute;
-    background: var(--win-bg);
-    border: 2px solid #1a5fa8;
-    border-radius: 8px 8px 4px 4px;
-    box-shadow: 4px 4px 20px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.6);
-    min-width: 340px; min-height: 200px;
-    display: flex; flex-direction: column;
-    overflow: hidden;
-  }
-  .win.active { z-index: 100; }
-
-  .win-titlebar {
-    background: var(--win-title);
-    padding: 6px 8px;
-    display: flex; align-items: center; gap: 8px;
-    cursor: move;
-    border-radius: 6px 6px 0 0;
-    border-bottom: 1px solid rgba(0,0,0,0.2);
-  }
-  .win-title-icon { font-size: 14px; }
-  .win-title-text {
-    flex: 1; color: white; font-size: 12px; font-weight: 700;
-    text-shadow: 0 1px 2px rgba(0,0,0,0.4);
-    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
-  }
-  .win-controls { display: flex; gap: 3px; }
-  .win-btn {
-    width: 18px; height: 18px; border-radius: 3px;
-    border: 1px solid rgba(0,0,0,0.4);
-    cursor: pointer; font-size: 10px; font-weight: 700;
-    display: flex; align-items: center; justify-content: center;
-    color: #1a1a1a; font-family: Marlett, var(--font);
-    transition: filter 0.1s;
-    line-height: 1;
-  }
-  .win-btn:hover { filter: brightness(1.3); }
-  .win-btn.min { background: linear-gradient(180deg, #f5c842 0%, #d4a010 100%); }
-  .win-btn.max { background: linear-gradient(180deg, #5cda5c 0%, #28a028 100%); }
-  .win-btn.close { background: linear-gradient(180deg, #f87060 0%, #d8301c 100%); }
-
-  .win-menubar {
-    background: #f0f0f0;
-    border-bottom: 1px solid #c8c8c8;
-    display: flex; gap: 0; padding: 2px 4px;
-    font-size: 12px;
-  }
-  .win-menu-item {
-    padding: 2px 8px; cursor: pointer; border-radius: 3px;
-    color: var(--text);
-  }
-  .win-menu-item:hover { background: var(--accent); color: white; }
-
-  .win-body {
-    flex: 1; overflow: auto; padding: 0;
-  }
-
-  /* ── ABOUT WINDOW ── */
-  .about-content {
-    padding: 24px;
-    display: flex; flex-direction: column; gap: 16px;
-  }
-  .about-header {
-    display: flex; gap: 20px; align-items: center;
-  }
-  .avatar {
-    width: 80px; height: 80px; border-radius: 50%;
-    background: linear-gradient(135deg, #3a7bd5, #0d3b8e);
-    display: flex; align-items: center; justify-content: center;
-    font-size: 32px; font-weight: 700; color: white;
-    border: 3px solid #3a7bd5; flex-shrink: 0;
-    text-shadow: 0 1px 4px rgba(0,0,0,0.3);
-  }
-  .about-name { font-size: 22px; font-weight: 700; color: var(--text); }
-  .about-role { font-size: 14px; color: #3a7bd5; font-weight: 600; margin-top: 2px; }
-  .about-location { font-size: 12px; color: var(--text-muted); margin-top: 4px; }
-
-  .about-bio {
-    font-size: 13px; line-height: 1.7; color: #333;
-    background: white; border: 1px solid #ddd;
-    border-radius: 4px; padding: 12px 14px;
-  }
-  .info-row { display: flex; gap: 8px; align-items: center; font-size: 12px; color: var(--text-muted); }
-  .info-label { font-weight: 600; color: var(--text); min-width: 80px; }
-  .chip {
-    display: inline-block; padding: 2px 8px;
-    background: #e8f0fe; color: #1a5fa8;
-    border-radius: 12px; font-size: 11px; font-weight: 600;
-    margin: 2px;
-  }
-
-  /* ── SKILLS WINDOW ── */
-  .skills-content { padding: 16px; display: flex; flex-direction: column; gap: 14px; }
-  .skill-group { }
-  .skill-group-title { font-size: 11px; font-weight: 700; color: #666; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; }
-  .skill-bar-row { display: flex; align-items: center; gap: 10px; margin-bottom: 6px; }
-  .skill-name { font-size: 12px; color: var(--text); min-width: 90px; font-weight: 600; }
-  .skill-track {
-    flex: 1; height: 14px;
-    background: #dde4ee; border-radius: 3px;
-    border: 1px solid #c0c8d8; overflow: hidden;
-  }
-  .skill-fill {
-    height: 100%;
-    background: linear-gradient(90deg, #3a7bd5, #6bb8f0);
-    border-radius: 3px 0 0 3px;
-    transition: width 1.2s cubic-bezier(.4,0,.2,1);
-  }
-  .skill-pct { font-size: 11px; color: var(--text-muted); min-width: 32px; text-align: right; }
-
-  /* ── PROJECTS WINDOW ── */
-  .projects-content { padding: 12px; display: flex; flex-direction: column; gap: 10px; }
-  .project-card {
-    background: white; border: 1px solid #dde; border-radius: 6px;
-    padding: 12px 14px; cursor: pointer;
-    transition: border-color 0.2s, box-shadow 0.2s;
-    display: flex; flex-direction: column; gap: 6px;
-  }
-  .project-card:hover { border-color: #3a7bd5; box-shadow: 0 2px 8px rgba(58,123,213,0.15); }
-  .project-top { display: flex; align-items: center; gap: 8px; }
-  .project-icon { font-size: 20px; }
-  .project-name { font-size: 14px; font-weight: 700; color: var(--text); }
-  .project-tech { font-size: 11px; color: #3a7bd5; }
-  .project-desc { font-size: 12px; color: var(--text-muted); line-height: 1.5; }
-  .project-tags { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 4px; }
-  .tag {
-    font-size: 10px; padding: 2px 6px;
-    background: #f0f4ff; color: #1a5fa8;
-    border-radius: 3px; font-weight: 600; border: 1px solid #c8d8f8;
-  }
-
-  /* ── CONTACT WINDOW ── */
-  .contact-content { padding: 20px; display: flex; flex-direction: column; gap: 14px; }
-  .contact-row {
-    display: flex; align-items: center; gap: 14px;
-    background: white; border: 1px solid #e0e4ec;
-    border-radius: 6px; padding: 12px 16px;
-    cursor: pointer; transition: background 0.15s, border-color 0.15s;
-  }
-  .contact-row:hover { background: #f0f4ff; border-color: #3a7bd5; }
-  .contact-ico { font-size: 24px; width: 36px; text-align: center; }
-  .contact-label { font-size: 13px; font-weight: 700; color: var(--text); }
-  .contact-val { font-size: 12px; color: #3a7bd5; }
-
-  /* ── TERMINAL WINDOW ── */
-  .terminal-body {
-    background: #0c0c0c; padding: 12px 14px;
-    font-family: var(--mono); font-size: 13px;
-    color: #cccccc; height: 100%; overflow-y: auto;
-    min-height: 220px;
-  }
-  .term-line { line-height: 1.6; }
-  .term-prompt { color: #3a9aff; }
-  .term-cmd { color: #e8e8e8; }
-  .term-out { color: #90d0a0; }
-  .term-err { color: #f07070; }
-  .term-yellow { color: #e8d060; }
-  .term-input-row { display: flex; align-items: center; gap: 0; margin-top: 4px; }
-  .term-input {
-    background: transparent; border: none; outline: none;
-    color: #e8e8e8; font-family: var(--mono); font-size: 13px;
-    flex: 1; caret-color: #fff;
-  }
-
-  /* ── EXPERIENCE WINDOW ── */
-  .exp-content { padding: 16px; display: flex; flex-direction: column; gap: 0; }
-  .exp-item {
-    display: flex; gap: 14px; padding-bottom: 16px;
-    border-left: 2px solid #3a7bd5; margin-left: 10px;
-    padding-left: 16px; position: relative;
-  }
-  .exp-item::before {
-    content: ''; width: 12px; height: 12px;
-    background: #3a7bd5; border-radius: 50%;
-    border: 2px solid white;
-    position: absolute; left: -7px; top: 2px;
-  }
-  .exp-info { flex: 1; }
-  .exp-role { font-size: 14px; font-weight: 700; color: var(--text); }
-  .exp-company { font-size: 12px; color: #3a7bd5; font-weight: 600; }
-  .exp-period { font-size: 11px; color: var(--text-muted); margin-top: 2px; }
-  .exp-points { margin-top: 8px; display: flex; flex-direction: column; gap: 4px; }
-  .exp-point { font-size: 12px; color: #444; line-height: 1.5; padding-left: 10px; position: relative; }
-  .exp-point::before { content: '▸'; position: absolute; left: 0; color: #3a7bd5; font-size: 10px; top: 1px; }
-
-  /* ── START MENU ── */
-  #start-menu {
-    position: fixed; bottom: var(--taskbar-h); left: 0;
-    width: 280px;
-    background: linear-gradient(180deg, #1a4a8a 0%, #0f2d5c 100%);
-    border: 1px solid rgba(255,255,255,0.3);
-    border-bottom: none; border-radius: 8px 8px 0 0;
-    box-shadow: 4px -4px 20px rgba(0,0,0,0.6);
-    z-index: 99998;
-    display: none;
-    overflow: hidden;
-  }
-  #start-menu.open { display: block; }
-  .sm-header {
-    background: linear-gradient(180deg, #2a5fc0, #1a3e8a);
-    padding: 14px 16px; display: flex; gap: 12px; align-items: center;
-    border-bottom: 1px solid rgba(255,255,255,0.15);
-  }
-  .sm-avatar {
-    width: 44px; height: 44px; border-radius: 4px;
-    background: linear-gradient(135deg, #5a9bf5, #2a6adb);
-    display: flex; align-items: center; justify-content: center;
-    font-size: 22px; font-weight: 700; color: white; border: 2px solid rgba(255,255,255,0.4);
-  }
-  .sm-name { color: white; font-weight: 700; font-size: 14px; }
-  .sm-title { color: rgba(255,255,255,0.7); font-size: 11px; }
-  .sm-list { padding: 6px 0; }
-  .sm-item {
-    display: flex; align-items: center; gap: 12px;
-    padding: 8px 16px; cursor: pointer; color: white; font-size: 13px;
-    transition: background 0.1s;
-  }
-  .sm-item:hover { background: rgba(255,255,255,0.15); }
-  .sm-item-ico { font-size: 18px; width: 24px; text-align: center; }
-  .sm-divider { height: 1px; background: rgba(255,255,255,0.1); margin: 4px 0; }
-  .sm-footer {
-    border-top: 1px solid rgba(255,255,255,0.15);
-    padding: 8px 16px; display: flex; justify-content: flex-end;
-    gap: 8px;
-  }
-  .sm-footer-btn {
-    display: flex; align-items: center; gap: 5px;
-    color: rgba(255,255,255,0.8); font-size: 11px; cursor: pointer;
-    padding: 3px 8px; border-radius: 3px;
-    transition: background 0.1s;
-  }
-  .sm-footer-btn:hover { background: rgba(255,255,255,0.15); color: white; }
-
-  /* ── ANIMATIONS ── */
-  @keyframes winOpen {
-    from { transform: scale(0.85); opacity: 0; }
-    to { transform: scale(1); opacity: 1; }
-  }
-  .win { animation: winOpen 0.18s ease-out; }
-
-  /* ── WALLPAPER CLOCK ── */
-  #desktop-clock {
-    position: absolute; bottom: 60px; right: 20px;
-    text-align: center; color: rgba(255,255,255,0.8);
-    font-size: 48px; font-weight: 300; letter-spacing: 2px;
-    text-shadow: 0 2px 12px rgba(0,0,0,0.5);
-    pointer-events: none;
-  }
-  #desktop-date-label {
-    font-size: 14px; color: rgba(255,255,255,0.6); letter-spacing: 1px;
-    text-shadow: 0 1px 6px rgba(0,0,0,0.4);
-    margin-top: 4px;
-  }
-
-  /* scrollbars */
-  .win-body::-webkit-scrollbar { width: 8px; }
-  .win-body::-webkit-scrollbar-track { background: #e8e8e8; }
-  .win-body::-webkit-scrollbar-thumb { background: #9ab; border-radius: 4px; }
-  .terminal-body::-webkit-scrollbar-thumb { background: #444; }
-</style>
-</head>
-<body>
-
-<!-- DESKTOP -->
-<div id="desktop">
-
-  <!-- Desktop icons -->
-  <div class="desktop-icons">
-    <div class="icon" ondblclick="openWin('about')">
-      <div class="ico">👤</div>
-      <span>About Me</span>
-    </div>
-    <div class="icon" ondblclick="openWin('skills')">
-      <div class="ico">⚡</div>
-      <span>Skills</span>
-    </div>
-    <div class="icon" ondblclick="openWin('projects')">
-      <div class="ico">📁</div>
-      <span>Projects</span>
-    </div>
-    <div class="icon" ondblclick="openWin('experience')">
-      <div class="ico">💼</div>
-      <span>Experience</span>
-    </div>
-    <div class="icon" ondblclick="openWin('contact')">
-      <div class="ico">📬</div>
-      <span>Contact</span>
-    </div>
-    <div class="icon" ondblclick="openWin('terminal')">
-      <div class="ico">💻</div>
-      <span>Terminal</span>
-    </div>
-  </div>
-
-  <!-- Wallpaper Clock -->
-  <div id="desktop-clock">00:00</div>
-  <div id="desktop-date-label">Loading...</div>
-
-</div>
-
-<!-- TASKBAR -->
-<div id="taskbar">
-  <button id="start-btn" onclick="toggleStart()">
-    <span class="win-logo">🪟</span> Start
-  </button>
-  <div class="taskbar-divider"></div>
-  <div id="taskbar-tasks" style="display:flex;gap:4px;flex:1;overflow:hidden;"></div>
-  <div id="taskbar-clock">
-    <div id="tb-time">00:00</div>
-    <div id="tb-date" style="font-size:10px;opacity:0.8;"></div>
-  </div>
-</div>
-
-<!-- START MENU -->
-<div id="start-menu">
-  <div class="sm-header">
-    <div class="sm-avatar">SG</div>
-    <div>
-      <div class="sm-name">Shivam Giri</div>
-      <div class="sm-title">Software Engineer</div>
-    </div>
-  </div>
-  <div class="sm-list">
-    <div class="sm-item" onclick="openWin('about'); closeStart()"><span class="sm-item-ico">👤</span> About Me</div>
-    <div class="sm-item" onclick="openWin('skills'); closeStart()"><span class="sm-item-ico">⚡</span> Skills & Technologies</div>
-    <div class="sm-item" onclick="openWin('projects'); closeStart()"><span class="sm-item-ico">📁</span> Projects</div>
-    <div class="sm-item" onclick="openWin('experience'); closeStart()"><span class="sm-item-ico">💼</span> Experience</div>
-    <div class="sm-item" onclick="openWin('contact'); closeStart()"><span class="sm-item-ico">📬</span> Contact</div>
-    <div class="sm-divider"></div>
-    <div class="sm-item" onclick="openWin('terminal'); closeStart()"><span class="sm-item-ico">💻</span> Terminal</div>
-  </div>
-  <div class="sm-footer">
-    <div class="sm-footer-btn" onclick="showShutdown()">⏻ Shut Down</div>
-  </div>
-</div>
-
-<!-- WINDOWS CONTAINER -->
-<div id="windows-container"></div>
-
-<script>
 const WINS = {
   about: {
     title: 'About Me — Shivam Giri',
@@ -691,16 +223,23 @@ function openWin(id) {
   const cfg = WINS[id];
   const desk = document.getElementById('desktop');
   const dw = desk.clientWidth, dh = desk.clientHeight;
-  const w = cfg.w || 480, h = cfg.h || 380;
-  const x = Math.max(20, Math.min(dw - w - 20, 60 + Object.keys(openWindows).length * 30));
-  const y = Math.max(20, Math.min(dh - h - 20, 40 + Object.keys(openWindows).length * 24));
+  const w = Math.min(cfg.w || 480, dw - 10);
+  const h = Math.min(cfg.h || 380, dh - 30);
+  let x, y;
+  if (dw < 600) {
+    x = (dw - w) / 2;
+    y = Math.max(5, (dh - h) / 2 - 10);
+  } else {
+    x = Math.max(20, Math.min(dw - w - 20, 60 + Object.keys(openWindows).length * 30));
+    y = Math.max(20, Math.min(dh - h - 20, 40 + Object.keys(openWindows).length * 24));
+  }
 
   const win = document.createElement('div');
   win.className = 'win active';
   win.id = 'win-' + id;
   win.style.cssText = `left:${x}px;top:${y}px;width:${w}px;height:${h}px;z-index:${++zTop};`;
   win.innerHTML = `
-    <div class="win-titlebar" onmousedown="startDrag(event, '${id}')">
+    <div class="win-titlebar" onmousedown="startDrag(event, '${id}')" ontouchstart="startDrag(event, '${id}')">
       <span class="win-title-icon">${cfg.icon}</span>
       <span class="win-title-text">${cfg.title}</span>
       <div class="win-controls">
@@ -797,26 +336,40 @@ function addTaskbarTask(id, icon, label) {
 
 // DRAG
 let drag = null;
+function getClientX(e) { return e.touches && e.touches.length > 0 ? e.touches[0].clientX : e.clientX; }
+function getClientY(e) { return e.touches && e.touches.length > 0 ? e.touches[0].clientY : e.clientY; }
+
 function startDrag(e, id) {
   if (e.target.closest('.win-controls')) return;
   const w = openWindows[id].el;
   focusWin(id);
-  drag = { id, startX: e.clientX - w.offsetLeft, startY: e.clientY - w.offsetTop };
-  document.onmousemove = doDrag;
-  document.onmouseup = stopDrag;
-  e.preventDefault();
+  drag = { id, startX: getClientX(e) - w.offsetLeft, startY: getClientY(e) - w.offsetTop };
+  if (e.type === 'touchstart') {
+    document.ontouchmove = doDrag;
+    document.ontouchend = stopDrag;
+    document.ontouchcancel = stopDrag;
+  } else {
+    document.onmousemove = doDrag;
+    document.onmouseup = stopDrag;
+    e.preventDefault();
+  }
 }
 function doDrag(e) {
   if (!drag) return;
   const w = openWindows[drag.id].el;
   const desk = document.getElementById('desktop');
-  let nx = e.clientX - drag.startX;
-  let ny = e.clientY - drag.startY;
-  nx = Math.max(-w.clientWidth + 60, Math.min(desk.clientWidth - 60, nx));
+  let nx = getClientX(e) - drag.startX;
+  let ny = getClientY(e) - drag.startY;
+  nx = Math.max(-w.clientWidth + 60, Math.min(desk.clientWidth - 20, nx));
   ny = Math.max(0, Math.min(desk.clientHeight - 30, ny));
   w.style.left = nx + 'px'; w.style.top = ny + 'px';
+  if(e.type === 'touchmove' && e.cancelable) e.preventDefault();
 }
-function stopDrag() { drag = null; document.onmousemove = null; document.onmouseup = null; }
+function stopDrag() {
+  drag = null;
+  document.onmousemove = null; document.onmouseup = null;
+  document.ontouchmove = null; document.ontouchend = null; document.ontouchcancel = null;
+}
 
 // START MENU
 function toggleStart() {
@@ -919,6 +472,3 @@ function showShutdown() {
 
 // Auto-open About on load
 setTimeout(() => openWin('about'), 300);
-</script>
-</body>
-</html>

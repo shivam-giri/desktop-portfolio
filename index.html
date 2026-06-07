@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shivam Giri — Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@300;400;600;700&family=Cascadia+Code:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- DESKTOP -->
+<div id="desktop">
+
+  <!-- Desktop icons -->
+  <div class="desktop-icons">
+    <div class="icon" onclick="openWin('about')">
+      <div class="ico">👤</div>
+      <span>About Me</span>
+    </div>
+    <div class="icon" onclick="openWin('skills')">
+      <div class="ico">⚡</div>
+      <span>Skills</span>
+    </div>
+    <div class="icon" onclick="openWin('projects')">
+      <div class="ico">📁</div>
+      <span>Projects</span>
+    </div>
+    <div class="icon" onclick="openWin('experience')">
+      <div class="ico">💼</div>
+      <span>Experience</span>
+    </div>
+    <div class="icon" onclick="openWin('contact')">
+      <div class="ico">📬</div>
+      <span>Contact</span>
+    </div>
+    <div class="icon" onclick="openWin('terminal')">
+      <div class="ico">💻</div>
+      <span>Terminal</span>
+    </div>
+  </div>
+
+  <!-- Wallpaper Clock -->
+  <div id="desktop-clock">00:00</div>
+  <div id="desktop-date-label">Loading...</div>
+
+</div>
+
+<!-- TASKBAR -->
+<div id="taskbar">
+  <button id="start-btn" onclick="toggleStart()">
+    <span class="win-logo">🪟</span> Start
+  </button>
+  <div class="taskbar-divider"></div>
+  <div id="taskbar-tasks" style="display:flex;gap:4px;flex:1;overflow:hidden;"></div>
+  <div id="taskbar-clock">
+    <div id="tb-time">00:00</div>
+    <div id="tb-date" style="font-size:10px;opacity:0.8;"></div>
+  </div>
+</div>
+
+<!-- START MENU -->
+<div id="start-menu">
+  <div class="sm-header">
+    <div class="sm-avatar">SG</div>
+    <div>
+      <div class="sm-name">Shivam Giri</div>
+      <div class="sm-title">Software Engineer</div>
+    </div>
+  </div>
+  <div class="sm-list">
+    <div class="sm-item" onclick="openWin('about'); closeStart()"><span class="sm-item-ico">👤</span> About Me</div>
+    <div class="sm-item" onclick="openWin('skills'); closeStart()"><span class="sm-item-ico">⚡</span> Skills & Technologies</div>
+    <div class="sm-item" onclick="openWin('projects'); closeStart()"><span class="sm-item-ico">📁</span> Projects</div>
+    <div class="sm-item" onclick="openWin('experience'); closeStart()"><span class="sm-item-ico">💼</span> Experience</div>
+    <div class="sm-item" onclick="openWin('contact'); closeStart()"><span class="sm-item-ico">📬</span> Contact</div>
+    <div class="sm-divider"></div>
+    <div class="sm-item" onclick="openWin('terminal'); closeStart()"><span class="sm-item-ico">💻</span> Terminal</div>
+  </div>
+  <div class="sm-footer">
+    <div class="sm-footer-btn" onclick="showShutdown()">⏻ Shut Down</div>
+  </div>
+</div>
+
+<!-- WINDOWS CONTAINER -->
+<div id="windows-container"></div>
+
+<script src="script.js"></script>
+</body>
+</html>
