@@ -1,74 +1,67 @@
 const WINS = {
   about: {
-    title: 'About Me — Shivam Giri',
-    icon: '👤', w: 520, h: 400,
+    title: 'About Me — Pranjal Sharma',
+    icon: '👤', w: 520, h: 420,
     content: () => `
       <div class="about-content">
         <div class="about-header">
-          <div class="avatar">SG</div>
+          <div class="avatar">PS</div>
           <div>
-            <div class="about-name">Shivam Giri</div>
-            <div class="about-role">💻 Software Engineer</div>
-            <div class="about-location">📍 India</div>
+            <div class="about-name">Pranjal Sharma</div>
+            <div class="about-role">💻 QA Automation Engineer</div>
+            <div class="about-location">📍 Indore, Madhya Pradesh</div>
           </div>
         </div>
         <div class="about-bio">
-          Passionate software engineer with expertise in building scalable web applications and robust backend systems.
-          I love turning complex problems into elegant, efficient solutions — one commit at a time.
-          Enthusiast of open-source, clean architecture, and continuous learning.
+          Results-driven QA Automation Engineer with 4+ years of experience in Manual and Automation Testing across Web, Mobile (Android & iOS), and Banking/FinTech domains. Proficient in Playwright, Selenium, and Robot Framework. Passionate about ensuring quality and performance.
         </div>
         <div style="display:flex;flex-direction:column;gap:8px;">
-          <div class="info-row"><span class="info-label">🎓 Degree</span> B.Tech in Computer Science</div>
-          <div class="info-row"><span class="info-label">📧 Email</span> shivam.giri@example.com</div>
-          <div class="info-row"><span class="info-label">🌐 Website</span> <span style="color:#3a7bd5;">shivamgiri.dev</span></div>
+          <div class="info-row"><span class="info-label">🎓 Degree</span> MCA - BIT Mesra</div>
+          <div class="info-row"><span class="info-label">📧 Email</span> sharmapranjal0111@gmail.com</div>
+          <div class="info-row"><span class="info-label">📞 Phone</span> +91-9770247401</div>
           <div class="info-row"><span class="info-label">🗣️ Languages</span>
             <span class="chip">English</span><span class="chip">Hindi</span>
           </div>
         </div>
         <div>
-          <div style="font-size:11px;font-weight:700;color:#666;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;">Interests</div>
+          <div style="font-size:11px;font-weight:700;color:#666;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;">Domains & Interests</div>
           <div>
-            <span class="chip">☁️ Cloud</span>
-            <span class="chip">🤖 AI/ML</span>
-            <span class="chip">🔐 Security</span>
-            <span class="chip">🎮 Game Dev</span>
-            <span class="chip">📖 Tech Blogging</span>
-            <span class="chip">🎸 Music</span>
+            <span class="chip">🏦 FinTech</span>
+            <span class="chip">🤖 Automation</span>
+            <span class="chip">🚀 CI/CD</span>
+            <span class="chip">📱 Mobile Testing</span>
+            <span class="chip">📊 Agile/Scrum</span>
           </div>
         </div>
       </div>`
   },
   skills: {
-    title: 'Skills — shivam_skills.exe',
+    title: 'Skills — pranjal_skills.exe',
     icon: '⚡', w: 480, h: 460,
     content: () => `
       <div class="skills-content">
         <div class="skill-group">
-          <div class="skill-group-title">🖥️ Frontend</div>
-          ${skillBar('React / Next.js', 90)}
-          ${skillBar('TypeScript', 85)}
-          ${skillBar('HTML & CSS', 92)}
-          ${skillBar('Vue.js', 70)}
+          <div class="skill-group-title">🤖 Automation Testing</div>
+          ${skillBar('Playwright (JS)', 90)}
+          ${skillBar('Selenium WebDriver', 85)}
+          ${skillBar('Robot Framework', 80)}
         </div>
         <div class="skill-group">
-          <div class="skill-group-title">⚙️ Backend</div>
-          ${skillBar('Node.js / Express', 88)}
-          ${skillBar('Python / Django', 80)}
-          ${skillBar('Go', 65)}
-          ${skillBar('REST & GraphQL', 85)}
+          <div class="skill-group-title">🛠️ Manual & API Testing</div>
+          ${skillBar('Functional & Regression', 95)}
+          ${skillBar('Postman & REST API', 88)}
+          ${skillBar('SQL & Database Testing', 85)}
         </div>
         <div class="skill-group">
-          <div class="skill-group-title">🗄️ Database & Cloud</div>
-          ${skillBar('PostgreSQL / MySQL', 82)}
-          ${skillBar('MongoDB', 78)}
-          ${skillBar('AWS / GCP', 72)}
-          ${skillBar('Docker / K8s', 75)}
+          <div class="skill-group-title">⚙️ Frameworks & Tools</div>
+          ${skillBar('TestNG, Maven, BDD', 85)}
+          ${skillBar('Jenkins & Git', 80)}
+          ${skillBar('JIRA & Agile/Scrum', 90)}
         </div>
         <div class="skill-group">
-          <div class="skill-group-title">🛠️ Tools</div>
-          ${skillBar('Git / GitHub', 95)}
-          ${skillBar('Linux / Bash', 80)}
-          ${skillBar('CI/CD Pipelines', 73)}
+          <div class="skill-group-title">🧠 AI Tools</div>
+          ${skillBar('ChatGPT & GitHub Copilot', 85)}
+          ${skillBar('Gemini', 80)}
         </div>
       </div>
       <script>
@@ -80,29 +73,24 @@ const WINS = {
       <\/script>`
   },
   projects: {
-    title: 'Projects — My Work',
+    title: 'Projects & Achievements',
     icon: '📁', w: 540, h: 470,
     content: () => `
       <div class="projects-content">
         <div class="project-card">
-          <div class="project-top"><span class="project-icon">🛒</span><div><div class="project-name">ShopStream</div><div class="project-tech">React · Node.js · MongoDB · Stripe</div></div></div>
-          <div class="project-desc">A full-stack e-commerce platform with real-time inventory, cart management, payment gateway integration, and an admin dashboard for analytics.</div>
-          <div class="project-tags"><span class="tag">Full-Stack</span><span class="tag">REST API</span><span class="tag">Auth</span><span class="tag">Payments</span></div>
+          <div class="project-top"><span class="project-icon">🚀</span><div><div class="project-name">Playwright Automation Framework</div><div class="project-tech">Playwright · JavaScript · CI/CD</div></div></div>
+          <div class="project-desc">Designed and implemented an automation framework from scratch at Bandhan Life Insurance, reducing manual regression testing effort by over 60%.</div>
+          <div class="project-tags"><span class="tag">Automation</span><span class="tag">Framework Design</span></div>
         </div>
         <div class="project-card">
-          <div class="project-top"><span class="project-icon">🤖</span><div><div class="project-name">ChatMatrix</div><div class="project-tech">Python · FastAPI · OpenAI · WebSockets</div></div></div>
-          <div class="project-desc">Real-time AI chat application with multi-model support, conversation memory, and streaming responses. Deployed on AWS with Docker.</div>
-          <div class="project-tags"><span class="tag">AI/ML</span><span class="tag">WebSockets</span><span class="tag">Docker</span><span class="tag">AWS</span></div>
+          <div class="project-top"><span class="project-icon">🏦</span><div><div class="project-name">Core Banking Validation</div><div class="project-tech">Manual Testing · SQL · Postman</div></div></div>
+          <div class="project-desc">Validated critical core banking transactions including NEFT, RTGS, SWIFT payments, and GL reconciliation workflows ensuring 100% compliance.</div>
+          <div class="project-tags"><span class="tag">FinTech</span><span class="tag">Banking</span><span class="tag">API</span></div>
         </div>
         <div class="project-card">
-          <div class="project-top"><span class="project-icon">📊</span><div><div class="project-name">DataPulse</div><div class="project-tech">Next.js · D3.js · PostgreSQL · GraphQL</div></div></div>
-          <div class="project-desc">Interactive data visualization dashboard for business KPIs with customizable widgets, scheduled reports, and real-time alerts.</div>
-          <div class="project-tags"><span class="tag">Data Viz</span><span class="tag">GraphQL</span><span class="tag">Dashboard</span></div>
-        </div>
-        <div class="project-card">
-          <div class="project-top"><span class="project-icon">🔒</span><div><div class="project-name">VaultPass</div><div class="project-tech">Go · AES-256 · React Native</div></div></div>
-          <div class="project-desc">End-to-end encrypted password manager with zero-knowledge architecture, biometric auth, and cross-device sync via secure cloud storage.</div>
-          <div class="project-tags"><span class="tag">Security</span><span class="tag">Encryption</span><span class="tag">Mobile</span></div>
+          <div class="project-top"><span class="project-icon">🏆</span><div><div class="project-name">Tech Excellence Award 2024–25</div><div class="project-tech">Bandhan Life Insurance Ltd</div></div></div>
+          <div class="project-desc">Recognized for outstanding contribution to quality assurance, process improvements, and successful delivery of automation suites.</div>
+          <div class="project-tags"><span class="tag">Award</span><span class="tag">Achievement</span></div>
         </div>
       </div>`
   },
@@ -113,46 +101,26 @@ const WINS = {
       <div class="exp-content">
         <div class="exp-item">
           <div class="exp-info">
-            <div class="exp-role">Senior Software Engineer</div>
-            <div class="exp-company">TechCorp Solutions Pvt. Ltd.</div>
-            <div class="exp-period">Jan 2023 — Present · Full-time</div>
+            <div class="exp-role">QA Automation Engineer</div>
+            <div class="exp-company">Bandhan Life Insurance Ltd, Mumbai</div>
+            <div class="exp-period">Dec 2022 — Present</div>
             <div class="exp-points">
-              <div class="exp-point">Led development of microservices architecture serving 500K+ daily active users</div>
-              <div class="exp-point">Reduced API response time by 40% through caching and query optimization</div>
-              <div class="exp-point">Mentored 4 junior engineers and conducted weekly code reviews</div>
+              <div class="exp-point">Designed automation frameworks using Playwright, Selenium, and Robot Framework, reducing regression effort by 60%+</div>
+              <div class="exp-point">Executed end-to-end testing for web and mobile (Android/iOS) banking applications</div>
+              <div class="exp-point">Validated core banking workflows (NEFT/RTGS/SWIFT) and GL reconciliation</div>
+              <div class="exp-point">Integrated automated test suites with Jenkins CI/CD pipelines</div>
+              <div class="exp-point">Performed REST API testing with Postman and backend database validation via SQL</div>
             </div>
           </div>
         </div>
         <div class="exp-item">
           <div class="exp-info">
-            <div class="exp-role">Software Engineer II</div>
-            <div class="exp-company">Nexus Digital Labs</div>
-            <div class="exp-period">Jul 2021 — Dec 2022 · Full-time</div>
+            <div class="exp-role">Education & Certification</div>
+            <div class="exp-company">BIT Mesra / ISTQB</div>
+            <div class="exp-period">2022</div>
             <div class="exp-points">
-              <div class="exp-point">Built and shipped 3 major product features used by 200K+ users monthly</div>
-              <div class="exp-point">Migrated legacy PHP monolith to Node.js microservices</div>
-              <div class="exp-point">Implemented CI/CD pipelines reducing deployment time by 60%</div>
-            </div>
-          </div>
-        </div>
-        <div class="exp-item">
-          <div class="exp-info">
-            <div class="exp-role">Junior Frontend Developer</div>
-            <div class="exp-company">Pixel Forge Studios</div>
-            <div class="exp-period">Jun 2020 — Jun 2021 · Full-time</div>
-            <div class="exp-points">
-              <div class="exp-point">Developed React components for SaaS products with 99.9% uptime</div>
-              <div class="exp-point">Improved page load performance by 35% through code splitting</div>
-            </div>
-          </div>
-        </div>
-        <div class="exp-item" style="border-left-color:#90d0a0;">
-          <div class="exp-info">
-            <div class="exp-role" style="color:#2a8a4a;">Software Intern</div>
-            <div class="exp-company">StartupNest</div>
-            <div class="exp-period">Dec 2019 — May 2020 · Internship</div>
-            <div class="exp-points">
-              <div class="exp-point">Contributed to open-source tools and developed internal dashboards</div>
+              <div class="exp-point">Master of Computer Applications (MCA) — CGPA: 8.21</div>
+              <div class="exp-point">ISTQB Foundation Level Certified</div>
             </div>
           </div>
         </div>
@@ -163,26 +131,22 @@ const WINS = {
     icon: '📬', w: 420, h: 360,
     content: () => `
       <div class="contact-content">
-        <div style="font-size:13px;color:#555;margin-bottom:4px;">Reach out — I'm always open to new opportunities and collaborations!</div>
-        <div class="contact-row" onclick="alert('Email: shivam.giri@example.com')">
+        <div style="font-size:13px;color:#555;margin-bottom:4px;">Reach out — I'm always open to new opportunities!</div>
+        <div class="contact-row" onclick="alert('Email: sharmapranjal0111@gmail.com')">
           <span class="contact-ico">📧</span>
-          <div><div class="contact-label">Email</div><div class="contact-val">shivam.giri@example.com</div></div>
+          <div><div class="contact-label">Email</div><div class="contact-val">sharmapranjal0111@gmail.com</div></div>
         </div>
-        <div class="contact-row" onclick="alert('GitHub: github.com/shivamgiri')">
-          <span class="contact-ico">🐙</span>
-          <div><div class="contact-label">GitHub</div><div class="contact-val">github.com/shivamgiri</div></div>
+        <div class="contact-row" onclick="alert('Phone: +91-9770247401')">
+          <span class="contact-ico">📞</span>
+          <div><div class="contact-label">Phone</div><div class="contact-val">+91-9770247401</div></div>
         </div>
-        <div class="contact-row" onclick="alert('LinkedIn: linkedin.com/in/shivamgiri')">
+        <div class="contact-row" onclick="alert('LinkedIn: linkedin.com/in/pranjal-sharma-b294071aa')">
           <span class="contact-ico">💼</span>
-          <div><div class="contact-label">LinkedIn</div><div class="contact-val">linkedin.com/in/shivamgiri</div></div>
+          <div><div class="contact-label">LinkedIn</div><div class="contact-val">pranjal-sharma-b294071aa</div></div>
         </div>
-        <div class="contact-row" onclick="alert('Twitter: @shivamgiri_dev')">
-          <span class="contact-ico">🐦</span>
-          <div><div class="contact-label">Twitter / X</div><div class="contact-val">@shivamgiri_dev</div></div>
-        </div>
-        <div class="contact-row" onclick="alert('Portfolio: shivamgiri.dev')">
-          <span class="contact-ico">🌐</span>
-          <div><div class="contact-label">Website</div><div class="contact-val">shivamgiri.dev</div></div>
+        <div class="contact-row">
+          <span class="contact-ico">📍</span>
+          <div><div class="contact-label">Location</div><div class="contact-val">Indore, Madhya Pradesh</div></div>
         </div>
       </div>`
   },
@@ -191,13 +155,13 @@ const WINS = {
     icon: '💻', w: 560, h: 360,
     content: () => `
       <div class="terminal-body" id="term-output">
-        <div class="term-line"><span class="term-yellow">Shivam Giri's Portfolio Terminal v1.0.0</span></div>
+        <div class="term-line"><span class="term-yellow">Pranjal Sharma's Portfolio Terminal v1.0.0</span></div>
         <div class="term-line"><span class="term-out">Type 'help' to see available commands.</span></div>
         <div class="term-line">&nbsp;</div>
       </div>
       <div class="terminal-body" style="padding-top:4px;padding-bottom:4px;border-top:1px solid #333;min-height:unset;">
         <div class="term-input-row">
-          <span class="term-prompt">shivam@portfolio</span><span style="color:#fff;">:</span><span style="color:#90d0a0;">~</span><span style="color:#fff;">$ </span>
+          <span class="term-prompt">pranjal@portfolio</span><span style="color:#fff;">:</span><span style="color:#90d0a0;">~</span><span style="color:#fff;">$ </span>
           <input class="term-input" id="term-input" type="text" autofocus autocomplete="off" spellcheck="false"
             onkeydown="handleTermInput(event)" placeholder="">
         </div>
@@ -403,7 +367,7 @@ setInterval(updateClock, 1000);
 // TERMINAL COMMANDS
 const termCmds = {
   help: `<div class="term-line term-yellow">Available commands:</div>
-    <div class="term-line term-out">&nbsp; whoami &nbsp;&nbsp;&nbsp;— About Shivam</div>
+    <div class="term-line term-out">&nbsp; whoami &nbsp;&nbsp;&nbsp;— About Pranjal</div>
     <div class="term-line term-out">&nbsp; skills &nbsp;&nbsp;— Tech stack</div>
     <div class="term-line term-out">&nbsp; projects — View projects</div>
     <div class="term-line term-out">&nbsp; contact &nbsp;— Get in touch</div>
@@ -411,29 +375,26 @@ const termCmds = {
     <div class="term-line term-out">&nbsp; clear &nbsp;&nbsp;&nbsp;— Clear terminal</div>
     <div class="term-line term-out">&nbsp; ls &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;— List files</div>
     <div class="term-line term-out">&nbsp; date &nbsp;&nbsp;&nbsp;&nbsp;— Current date/time</div>`,
-  whoami: `<div class="term-line term-out">Shivam Giri — Software Engineer</div>
-    <div class="term-line" style="color:#bbb;">Full-stack developer | Open source enthusiast | India</div>
-    <div class="term-line" style="color:#bbb;">3+ years experience building scalable web apps</div>`,
+  whoami: `<div class="term-line term-out">Pranjal Sharma — QA Automation Engineer</div>
+    <div class="term-line" style="color:#bbb;">ISTQB Certified | Playwright & Selenium Expert | India</div>
+    <div class="term-line" style="color:#bbb;">4+ years experience in Manual & Automation Testing</div>`,
   skills: `<div class="term-line term-yellow">[ Tech Stack ]</div>
-    <div class="term-line" style="color:#adf">Frontend&nbsp;&nbsp;: React, Next.js, TypeScript, Vue.js</div>
-    <div class="term-line" style="color:#adf">Backend&nbsp;&nbsp;: Node.js, Python, Go, FastAPI</div>
-    <div class="term-line" style="color:#adf">Database : PostgreSQL, MongoDB, Redis</div>
-    <div class="term-line" style="color:#adf">Cloud&nbsp;&nbsp;&nbsp;&nbsp;: AWS, GCP, Docker, Kubernetes</div>`,
-  projects: `<div class="term-line term-yellow">[ Projects — 4 found ]</div>
-    <div class="term-line term-out">📁 ShopStream &nbsp;&nbsp;— Full-stack e-commerce platform</div>
-    <div class="term-line term-out">🤖 ChatMatrix &nbsp;&nbsp;— Real-time AI chat app</div>
-    <div class="term-line term-out">📊 DataPulse &nbsp;&nbsp;&nbsp;— Analytics dashboard</div>
-    <div class="term-line term-out">🔒 VaultPass &nbsp;&nbsp;&nbsp;— Encrypted password manager</div>`,
+    <div class="term-line" style="color:#adf">Automation&nbsp;: Playwright, Selenium, Robot Framework</div>
+    <div class="term-line" style="color:#adf">Manual&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: Functional, Regression, API, DB Testing</div>
+    <div class="term-line" style="color:#adf">Tools&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: Postman, Jenkins, JIRA, TestNG, Maven</div>
+    <div class="term-line" style="color:#adf">AI Tools&nbsp;&nbsp;&nbsp;: ChatGPT, GitHub Copilot, Gemini</div>`,
+  projects: `<div class="term-line term-yellow">[ Projects & Achievements ]</div>
+    <div class="term-line term-out">🚀 Playwright Automation Framework (60%+ effort reduced)</div>
+    <div class="term-line term-out">🏦 Core Banking & GL Reconciliation Testing</div>
+    <div class="term-line term-out">🏆 Tech Excellence Award 2024–25</div>`,
   contact: `<div class="term-line term-yellow">[ Contact Info ]</div>
-    <div class="term-line" style="color:#8df">📧 shivam.giri@example.com</div>
-    <div class="term-line" style="color:#8df">🐙 github.com/shivamgiri</div>
-    <div class="term-line" style="color:#8df">💼 linkedin.com/in/shivamgiri</div>`,
+    <div class="term-line" style="color:#8df">📧 sharmapranjal0111@gmail.com</div>
+    <div class="term-line" style="color:#8df">📞 +91-9770247401</div>
+    <div class="term-line" style="color:#8df">💼 linkedin.com/in/pranjal-sharma-b294071aa</div>`,
   experience: `<div class="term-line term-yellow">[ Career Timeline ]</div>
-    <div class="term-line term-out">2023–Present : Senior SWE @ TechCorp Solutions</div>
-    <div class="term-line term-out">2021–2022&nbsp;&nbsp;&nbsp;: SWE II @ Nexus Digital Labs</div>
-    <div class="term-line term-out">2020–2021&nbsp;&nbsp;&nbsp;: Junior Dev @ Pixel Forge Studios</div>
-    <div class="term-line term-out">2019–2020&nbsp;&nbsp;&nbsp;: Intern @ StartupNest</div>`,
-  ls: `<div class="term-line" style="color:#9be">about.txt &nbsp;&nbsp; skills.json &nbsp;&nbsp; projects/ &nbsp;&nbsp; resume.pdf &nbsp;&nbsp; contact.vcf</div>`,
+    <div class="term-line term-out">2022–Present : QA Automation Engineer @ Bandhan Life Insurance</div>
+    <div class="term-line term-out">2022&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: MCA @ BIT Mesra (CGPA: 8.21)</div>`,
+  ls: `<div class="term-line" style="color:#9be">about.txt &nbsp;&nbsp; skills.json &nbsp;&nbsp; achievements/ &nbsp;&nbsp; resume.pdf &nbsp;&nbsp; contact.vcf</div>`,
   date: () => `<div class="term-line term-out">${new Date().toString()}</div>`,
 };
 
@@ -446,7 +407,7 @@ function handleTermInput(e) {
   if (!cmd) return;
   const echoLine = document.createElement('div');
   echoLine.className = 'term-line';
-  echoLine.innerHTML = `<span class="term-prompt">shivam@portfolio</span><span style="color:#fff;">:~$ </span><span class="term-cmd">${cmd}</span>`;
+  echoLine.innerHTML = `<span class="term-prompt">pranjal@portfolio</span><span style="color:#fff;">:~$ </span><span class="term-cmd">${cmd}</span>`;
   out.appendChild(echoLine);
   if (cmd === 'clear') { out.innerHTML = ''; return; }
   const res = termCmds[cmd];
@@ -462,9 +423,9 @@ function handleTermInput(e) {
 
 function showShutdown() {
   closeStart();
-  if (confirm('Are you sure you want to close Shivam\'s Portfolio?\n\nThank you for visiting! 👋')) {
+  if (confirm('Are you sure you want to close Pranjal\'s Portfolio?\n\nThank you for visiting! 👋')) {
     document.body.innerHTML = `<div style="width:100vw;height:100vh;background:#000;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:16px;">
-      <div style="color:white;font-size:20px;font-family:Segoe UI,sans-serif;">👋 Thanks for visiting Shivam's Portfolio!</div>
+      <div style="color:white;font-size:20px;font-family:Segoe UI,sans-serif;">👋 Thanks for visiting Pranjal's Portfolio!</div>
       <div style="color:#aaa;font-size:14px;font-family:Segoe UI,sans-serif;">It is now safe to close this window.</div>
     </div>`;
   }
