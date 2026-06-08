@@ -1,0 +1,136 @@
+{
+  "user": {
+    "name": "Pranjal Sharma",
+    "avatar": "PS",
+    "role": "QA Automation Engineer",
+    "title": "QA Automation Engineer",
+    "location": "Indore, Madhya Pradesh",
+    "bio": "Results-driven QA Automation Engineer with 4+ years of experience in Manual and Automation Testing across Web, Mobile (Android & iOS), and Banking/FinTech domains. Proficient in Playwright, Selenium, and Robot Framework. Passionate about ensuring quality and performance.",
+    "degree": "MCA - BIT Mesra",
+    "email": "sharmapranjal0111@gmail.com",
+    "phone": "+91-9770247401",
+    "linkedin": "linkedin.com/in/pranjal-sharma-b294071aa",
+    "linkedinHandle": "pranjal-sharma-b294071aa",
+    "twitter": null,
+    "website": null,
+    "languages": ["English", "Hindi"],
+    "interests": ["FinTech", "Automation", "CI/CD", "Mobile Testing", "Agile/Scrum"]
+  },
+  "skills": [
+    {
+      "groupTitle": "🤖 Automation Testing",
+      "items": [
+        { "name": "Playwright (JS)", "pct": 90 },
+        { "name": "Selenium WebDriver", "pct": 85 },
+        { "name": "Robot Framework", "pct": 80 }
+      ]
+    },
+    {
+      "groupTitle": "🛠️ Manual & API Testing",
+      "items": [
+        { "name": "Functional & Regression", "pct": 95 },
+        { "name": "Postman & REST API", "pct": 88 },
+        { "name": "SQL & Database Testing", "pct": 85 }
+      ]
+    },
+    {
+      "groupTitle": "⚙️ Frameworks & Tools",
+      "items": [
+        { "name": "TestNG, Maven, BDD", "pct": 85 },
+        { "name": "Jenkins & Git", "pct": 80 },
+        { "name": "JIRA & Agile/Scrum", "pct": 90 }
+      ]
+    },
+    {
+      "groupTitle": "🧠 AI Tools",
+      "items": [
+        { "name": "ChatGPT & GitHub Copilot", "pct": 85 },
+        { "name": "Gemini", "pct": 80 }
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "icon": "🚀",
+      "name": "Playwright Automation Framework",
+      "tech": "Playwright · JavaScript · CI/CD",
+      "desc": "Designed and implemented an automation framework from scratch at Bandhan Life Insurance, reducing manual regression testing effort by over 60%.",
+      "tags": ["Automation", "Framework Design"]
+    },
+    {
+      "icon": "🏦",
+      "name": "Core Banking Validation",
+      "tech": "Manual Testing · SQL · Postman",
+      "desc": "Validated critical core banking transactions including NEFT, RTGS, SWIFT payments, and GL reconciliation workflows ensuring 100% compliance.",
+      "tags": ["FinTech", "Banking", "API"]
+    },
+    {
+      "icon": "🏆",
+      "name": "Tech Excellence Award 2024–25",
+      "tech": "Bandhan Life Insurance Ltd",
+      "desc": "Recognized for outstanding contribution to quality assurance, process improvements, and successful delivery of automation suites.",
+      "tags": ["Award", "Achievement"]
+    }
+  ],
+  "experience": [
+    {
+      "role": "QA Automation Engineer",
+      "company": "Bandhan Life Insurance Ltd, Mumbai",
+      "period": "Dec 2022 — Present",
+      "color": "",
+      "roleColor": "",
+      "points": [
+        "Designed automation frameworks using Playwright, Selenium, and Robot Framework, reducing regression effort by 60%+",
+        "Executed end-to-end testing for web and mobile (Android/iOS) banking applications",
+        "Validated core banking workflows (NEFT/RTGS/SWIFT) and GL reconciliation",
+        "Integrated automated test suites with Jenkins CI/CD pipelines",
+        "Performed REST API testing with Postman and backend database validation via SQL"
+      ]
+    },
+    {
+      "role": "Education & Certification",
+      "company": "BIT Mesra / ISTQB",
+      "period": "2022",
+      "color": "",
+      "roleColor": "",
+      "points": [
+        "Master of Computer Applications (MCA) — CGPA: 8.21",
+        "ISTQB Foundation Level Certified"
+      ]
+    }
+  ],
+  "terminal": {
+    "header": "Pranjal Sharma's Portfolio Terminal v1.0.0",
+    "prompt": "pranjal@portfolio",
+    "whoami": [
+      "<div class=\"term-line term-out\">Pranjal Sharma — QA Automation Engineer</div>",
+      "<div class=\"term-line\" style=\"color:#bbb;\">ISTQB Certified | Playwright & Selenium Expert | India</div>",
+      "<div class=\"term-line\" style=\"color:#bbb;\">4+ years experience in Manual & Automation Testing</div>"
+    ],
+    "skills": [
+      "<div class=\"term-line term-yellow\">[ Tech Stack ]</div>",
+      "<div class=\"term-line\" style=\"color:#adf\">Automation&nbsp;: Playwright, Selenium, Robot Framework</div>",
+      "<div class=\"term-line\" style=\"color:#adf\">Manual&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: Functional, Regression, API, DB Testing</div>",
+      "<div class=\"term-line\" style=\"color:#adf\">Tools&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: Postman, Jenkins, JIRA, TestNG, Maven</div>",
+      "<div class=\"term-line\" style=\"color:#adf\">AI Tools&nbsp;&nbsp;&nbsp;: ChatGPT, GitHub Copilot, Gemini</div>"
+    ],
+    "projects": [
+      "<div class=\"term-line term-yellow\">[ Projects & Achievements ]</div>",
+      "<div class=\"term-line term-out\">🚀 Playwright Automation Framework (60%+ effort reduced)</div>",
+      "<div class=\"term-line term-out\">🏦 Core Banking & GL Reconciliation Testing</div>",
+      "<div class=\"term-line term-out\">🏆 Tech Excellence Award 2024–25</div>"
+    ],
+    "contact": [
+      "<div class=\"term-line term-yellow\">[ Contact Info ]</div>",
+      "<div class=\"term-line\" style=\"color:#8df\">📧 sharmapranjal0111@gmail.com</div>",
+      "<div class=\"term-line\" style=\"color:#8df\">📞 +91-9770247401</div>",
+      "<div class=\"term-line\" style=\"color:#8df\">💼 linkedin.com/in/pranjal-sharma-b294071aa</div>"
+    ],
+    "experience": [
+      "<div class=\"term-line term-yellow\">[ Career Timeline ]</div>",
+      "<div class=\"term-line term-out\">2022–Present : QA Automation Engineer @ Bandhan Life Insurance</div>",
+      "<div class=\"term-line term-out\">2022&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: MCA @ BIT Mesra (CGPA: 8.21)</div>"
+    ],
+    "ls": "<div class=\"term-line\" style=\"color:#9be\">about.txt &nbsp;&nbsp; skills.json &nbsp;&nbsp; achievements/ &nbsp;&nbsp; resume.pdf &nbsp;&nbsp; contact.vcf</div>"
+  }
+}

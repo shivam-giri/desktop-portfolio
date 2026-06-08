@@ -1,68 +1,49 @@
+let PORTFOLIO_DATA = null;
+
 const WINS = {
   about: {
-    title: 'About Me — Pranjal Sharma',
+    title: () => `About Me — ${PORTFOLIO_DATA.user.name}`,
     icon: '👤', w: 520, h: 420,
-    content: () => `
+    content: () => {
+      const u = PORTFOLIO_DATA.user;
+      return `
       <div class="about-content">
         <div class="about-header">
-          <div class="avatar">PS</div>
+          <div class="avatar">${u.avatar}</div>
           <div>
-            <div class="about-name">Pranjal Sharma</div>
-            <div class="about-role">💻 QA Automation Engineer</div>
-            <div class="about-location">📍 Indore, Madhya Pradesh</div>
+            <div class="about-name">${u.name}</div>
+            <div class="about-role">💻 ${u.role}</div>
+            <div class="about-location">📍 ${u.location}</div>
           </div>
         </div>
-        <div class="about-bio">
-          Results-driven QA Automation Engineer with 4+ years of experience in Manual and Automation Testing across Web, Mobile (Android & iOS), and Banking/FinTech domains. Proficient in Playwright, Selenium, and Robot Framework. Passionate about ensuring quality and performance.
-        </div>
+        <div class="about-bio">${u.bio}</div>
         <div style="display:flex;flex-direction:column;gap:8px;">
-          <div class="info-row"><span class="info-label">🎓 Degree</span> MCA - BIT Mesra</div>
-          <div class="info-row"><span class="info-label">📧 Email</span> sharmapranjal0111@gmail.com</div>
-          <div class="info-row"><span class="info-label">📞 Phone</span> +91-9770247401</div>
-          <div class="info-row"><span class="info-label">🗣️ Languages</span>
-            <span class="chip">English</span><span class="chip">Hindi</span>
-          </div>
+          ${u.degree ? `<div class="info-row"><span class="info-label">🎓 Degree</span> ${u.degree}</div>` : ''}
+          ${u.email ? `<div class="info-row"><span class="info-label">📧 Email</span> ${u.email}</div>` : ''}
+          ${u.phone ? `<div class="info-row"><span class="info-label">📞 Phone</span> ${u.phone}</div>` : ''}
+          ${u.website ? `<div class="info-row"><span class="info-label">🌐 Website</span> <span style="color:#3a7bd5;">${u.website}</span></div>` : ''}
+          ${u.languages && u.languages.length ? `<div class="info-row"><span class="info-label">🗣️ Languages</span>${u.languages.map(l => `<span class="chip">${l}</span>`).join('')}</div>` : ''}
         </div>
         <div>
           <div style="font-size:11px;font-weight:700;color:#666;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;">Domains & Interests</div>
           <div>
-            <span class="chip">🏦 FinTech</span>
-            <span class="chip">🤖 Automation</span>
-            <span class="chip">🚀 CI/CD</span>
-            <span class="chip">📱 Mobile Testing</span>
-            <span class="chip">📊 Agile/Scrum</span>
+            ${(u.interests || []).map(i => `<span class="chip">${i}</span>`).join('')}
           </div>
         </div>
-      </div>`
+      </div>`;
+    }
   },
   skills: {
-    title: 'Skills — pranjal_skills.exe',
+    title: () => `Skills — ${PORTFOLIO_DATA.user.name.split(' ')[0].toLowerCase()}_skills.exe`,
     icon: '⚡', w: 480, h: 460,
     content: () => `
       <div class="skills-content">
-        <div class="skill-group">
-          <div class="skill-group-title">🤖 Automation Testing</div>
-          ${skillBar('Playwright (JS)', 90)}
-          ${skillBar('Selenium WebDriver', 85)}
-          ${skillBar('Robot Framework', 80)}
-        </div>
-        <div class="skill-group">
-          <div class="skill-group-title">🛠️ Manual & API Testing</div>
-          ${skillBar('Functional & Regression', 95)}
-          ${skillBar('Postman & REST API', 88)}
-          ${skillBar('SQL & Database Testing', 85)}
-        </div>
-        <div class="skill-group">
-          <div class="skill-group-title">⚙️ Frameworks & Tools</div>
-          ${skillBar('TestNG, Maven, BDD', 85)}
-          ${skillBar('Jenkins & Git', 80)}
-          ${skillBar('JIRA & Agile/Scrum', 90)}
-        </div>
-        <div class="skill-group">
-          <div class="skill-group-title">🧠 AI Tools</div>
-          ${skillBar('ChatGPT & GitHub Copilot', 85)}
-          ${skillBar('Gemini', 80)}
-        </div>
+        ${PORTFOLIO_DATA.skills.map(g => `
+          <div class="skill-group">
+            <div class="skill-group-title">${g.groupTitle}</div>
+            ${g.items.map(s => skillBar(s.name, s.pct)).join('')}
+          </div>
+        `).join('')}
       </div>
       <script>
         setTimeout(() => {
@@ -73,95 +54,90 @@ const WINS = {
       <\/script>`
   },
   projects: {
-    title: 'Projects & Achievements',
+    title: () => 'Projects & Achievements',
     icon: '📁', w: 540, h: 470,
     content: () => `
       <div class="projects-content">
-        <div class="project-card">
-          <div class="project-top"><span class="project-icon">🚀</span><div><div class="project-name">Playwright Automation Framework</div><div class="project-tech">Playwright · JavaScript · CI/CD</div></div></div>
-          <div class="project-desc">Designed and implemented an automation framework from scratch at Bandhan Life Insurance, reducing manual regression testing effort by over 60%.</div>
-          <div class="project-tags"><span class="tag">Automation</span><span class="tag">Framework Design</span></div>
-        </div>
-        <div class="project-card">
-          <div class="project-top"><span class="project-icon">🏦</span><div><div class="project-name">Core Banking Validation</div><div class="project-tech">Manual Testing · SQL · Postman</div></div></div>
-          <div class="project-desc">Validated critical core banking transactions including NEFT, RTGS, SWIFT payments, and GL reconciliation workflows ensuring 100% compliance.</div>
-          <div class="project-tags"><span class="tag">FinTech</span><span class="tag">Banking</span><span class="tag">API</span></div>
-        </div>
-        <div class="project-card">
-          <div class="project-top"><span class="project-icon">🏆</span><div><div class="project-name">Tech Excellence Award 2024–25</div><div class="project-tech">Bandhan Life Insurance Ltd</div></div></div>
-          <div class="project-desc">Recognized for outstanding contribution to quality assurance, process improvements, and successful delivery of automation suites.</div>
-          <div class="project-tags"><span class="tag">Award</span><span class="tag">Achievement</span></div>
-        </div>
+        ${PORTFOLIO_DATA.projects.map(p => `
+          <div class="project-card">
+            <div class="project-top"><span class="project-icon">${p.icon}</span><div><div class="project-name">${p.name}</div><div class="project-tech">${p.tech}</div></div></div>
+            <div class="project-desc">${p.desc}</div>
+            <div class="project-tags">${p.tags.map(t => `<span class="tag">${t}</span>`).join('')}</div>
+          </div>
+        `).join('')}
       </div>`
   },
   experience: {
-    title: 'Experience — Career Timeline',
+    title: () => 'Experience — Career Timeline',
     icon: '💼', w: 520, h: 440,
     content: () => `
       <div class="exp-content">
-        <div class="exp-item">
-          <div class="exp-info">
-            <div class="exp-role">QA Automation Engineer</div>
-            <div class="exp-company">Bandhan Life Insurance Ltd, Mumbai</div>
-            <div class="exp-period">Dec 2022 — Present</div>
-            <div class="exp-points">
-              <div class="exp-point">Designed automation frameworks using Playwright, Selenium, and Robot Framework, reducing regression effort by 60%+</div>
-              <div class="exp-point">Executed end-to-end testing for web and mobile (Android/iOS) banking applications</div>
-              <div class="exp-point">Validated core banking workflows (NEFT/RTGS/SWIFT) and GL reconciliation</div>
-              <div class="exp-point">Integrated automated test suites with Jenkins CI/CD pipelines</div>
-              <div class="exp-point">Performed REST API testing with Postman and backend database validation via SQL</div>
+        ${PORTFOLIO_DATA.experience.map(e => `
+          <div class="exp-item" ${e.color ? `style="border-left-color:${e.color};"` : ''}>
+            <div class="exp-info">
+              <div class="exp-role" ${e.roleColor ? `style="color:${e.roleColor};"` : ''}>${e.role}</div>
+              <div class="exp-company">${e.company}</div>
+              <div class="exp-period">${e.period}</div>
+              <div class="exp-points">
+                ${e.points.map(pt => `<div class="exp-point">${pt}</div>`).join('')}
+              </div>
             </div>
           </div>
-        </div>
-        <div class="exp-item">
-          <div class="exp-info">
-            <div class="exp-role">Education & Certification</div>
-            <div class="exp-company">BIT Mesra / ISTQB</div>
-            <div class="exp-period">2022</div>
-            <div class="exp-points">
-              <div class="exp-point">Master of Computer Applications (MCA) — CGPA: 8.21</div>
-              <div class="exp-point">ISTQB Foundation Level Certified</div>
-            </div>
-          </div>
-        </div>
+        `).join('')}
       </div>`
   },
   contact: {
-    title: 'Contact — Get in Touch',
+    title: () => 'Contact — Get in Touch',
     icon: '📬', w: 420, h: 360,
-    content: () => `
+    content: () => {
+      const u = PORTFOLIO_DATA.user;
+      return `
       <div class="contact-content">
         <div style="font-size:13px;color:#555;margin-bottom:4px;">Reach out — I'm always open to new opportunities!</div>
-        <div class="contact-row" onclick="alert('Email: sharmapranjal0111@gmail.com')">
+        ${u.email ? `
+        <div class="contact-row" onclick="alert('Email: ${u.email}')">
           <span class="contact-ico">📧</span>
-          <div><div class="contact-label">Email</div><div class="contact-val">sharmapranjal0111@gmail.com</div></div>
-        </div>
-        <div class="contact-row" onclick="alert('Phone: +91-9770247401')">
+          <div><div class="contact-label">Email</div><div class="contact-val">${u.email}</div></div>
+        </div>` : ''}
+        ${u.phone ? `
+        <div class="contact-row" onclick="alert('Phone: ${u.phone}')">
           <span class="contact-ico">📞</span>
-          <div><div class="contact-label">Phone</div><div class="contact-val">+91-9770247401</div></div>
-        </div>
-        <div class="contact-row" onclick="alert('LinkedIn: linkedin.com/in/pranjal-sharma-b294071aa')">
+          <div><div class="contact-label">Phone</div><div class="contact-val">${u.phone}</div></div>
+        </div>` : ''}
+        ${u.linkedin ? `
+        <div class="contact-row" onclick="alert('LinkedIn: ${u.linkedin}')">
           <span class="contact-ico">💼</span>
-          <div><div class="contact-label">LinkedIn</div><div class="contact-val">pranjal-sharma-b294071aa</div></div>
-        </div>
+          <div><div class="contact-label">LinkedIn</div><div class="contact-val">${u.linkedinHandle}</div></div>
+        </div>` : ''}
+        ${u.twitter ? `
+        <div class="contact-row" onclick="alert('Twitter: ${u.twitter}')">
+          <span class="contact-ico">🐦</span>
+          <div><div class="contact-label">Twitter / X</div><div class="contact-val">${u.twitter}</div></div>
+        </div>` : ''}
+        ${u.website ? `
+        <div class="contact-row" onclick="alert('Website: ${u.website}')">
+          <span class="contact-ico">🌐</span>
+          <div><div class="contact-label">Website</div><div class="contact-val">${u.website}</div></div>
+        </div>` : ''}
         <div class="contact-row">
           <span class="contact-ico">📍</span>
-          <div><div class="contact-label">Location</div><div class="contact-val">Indore, Madhya Pradesh</div></div>
+          <div><div class="contact-label">Location</div><div class="contact-val">${u.location}</div></div>
         </div>
       </div>`
+    }
   },
   terminal: {
-    title: 'Terminal — cmd.exe',
+    title: () => 'Terminal — cmd.exe',
     icon: '💻', w: 560, h: 360,
     content: () => `
       <div class="terminal-body" id="term-output">
-        <div class="term-line"><span class="term-yellow">Pranjal Sharma's Portfolio Terminal v1.0.0</span></div>
+        <div class="term-line"><span class="term-yellow">${PORTFOLIO_DATA.terminal.header}</span></div>
         <div class="term-line"><span class="term-out">Type 'help' to see available commands.</span></div>
         <div class="term-line">&nbsp;</div>
       </div>
       <div class="terminal-body" style="padding-top:4px;padding-bottom:4px;border-top:1px solid #333;min-height:unset;">
         <div class="term-input-row">
-          <span class="term-prompt">pranjal@portfolio</span><span style="color:#fff;">:</span><span style="color:#90d0a0;">~</span><span style="color:#fff;">$ </span>
+          <span class="term-prompt">${PORTFOLIO_DATA.terminal.prompt}:~$ </span>
           <input class="term-input" id="term-input" type="text" autofocus autocomplete="off" spellcheck="false"
             onkeydown="handleTermInput(event)" placeholder="">
         </div>
@@ -198,6 +174,8 @@ function openWin(id) {
     y = Math.max(20, Math.min(dh - h - 20, 40 + Object.keys(openWindows).length * 24));
   }
 
+  const titleText = typeof cfg.title === 'function' ? cfg.title() : cfg.title;
+
   const win = document.createElement('div');
   win.className = 'win active';
   win.id = 'win-' + id;
@@ -205,7 +183,7 @@ function openWin(id) {
   win.innerHTML = `
     <div class="win-titlebar" onmousedown="startDrag(event, '${id}')" ontouchstart="startDrag(event, '${id}')">
       <span class="win-title-icon">${cfg.icon}</span>
-      <span class="win-title-text">${cfg.title}</span>
+      <span class="win-title-text">${titleText}</span>
       <div class="win-controls">
         <div class="win-btn min" onclick="minimizeWin('${id}')">─</div>
         <div class="win-btn max" onclick="toggleMax('${id}')">□</div>
@@ -222,7 +200,7 @@ function openWin(id) {
   document.getElementById('windows-container').appendChild(win);
   openWindows[id] = { el: win, minimized: false, maxed: false, prevRect: null };
   win.addEventListener('mousedown', () => focusWin(id));
-  addTaskbarTask(id, cfg.icon, cfg.title.split('—')[0].trim());
+  addTaskbarTask(id, cfg.icon, titleText.split('—')[0].trim());
 
   // animate skill bars
   if (id === 'skills') {
@@ -361,42 +339,29 @@ function updateClock() {
   document.getElementById('tb-time').textContent = hh + ':' + mm;
   document.getElementById('tb-date').textContent = now.toLocaleDateString('en-IN', { month: 'short', day: 'numeric' });
 }
-updateClock();
-setInterval(updateClock, 1000);
 
 // TERMINAL COMMANDS
-const termCmds = {
-  help: `<div class="term-line term-yellow">Available commands:</div>
-    <div class="term-line term-out">&nbsp; whoami &nbsp;&nbsp;&nbsp;— About Pranjal</div>
-    <div class="term-line term-out">&nbsp; skills &nbsp;&nbsp;— Tech stack</div>
-    <div class="term-line term-out">&nbsp; projects — View projects</div>
-    <div class="term-line term-out">&nbsp; contact &nbsp;— Get in touch</div>
-    <div class="term-line term-out">&nbsp; experience— Career history</div>
-    <div class="term-line term-out">&nbsp; clear &nbsp;&nbsp;&nbsp;— Clear terminal</div>
-    <div class="term-line term-out">&nbsp; ls &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;— List files</div>
-    <div class="term-line term-out">&nbsp; date &nbsp;&nbsp;&nbsp;&nbsp;— Current date/time</div>`,
-  whoami: `<div class="term-line term-out">Pranjal Sharma — QA Automation Engineer</div>
-    <div class="term-line" style="color:#bbb;">ISTQB Certified | Playwright & Selenium Expert | India</div>
-    <div class="term-line" style="color:#bbb;">4+ years experience in Manual & Automation Testing</div>`,
-  skills: `<div class="term-line term-yellow">[ Tech Stack ]</div>
-    <div class="term-line" style="color:#adf">Automation&nbsp;: Playwright, Selenium, Robot Framework</div>
-    <div class="term-line" style="color:#adf">Manual&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: Functional, Regression, API, DB Testing</div>
-    <div class="term-line" style="color:#adf">Tools&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: Postman, Jenkins, JIRA, TestNG, Maven</div>
-    <div class="term-line" style="color:#adf">AI Tools&nbsp;&nbsp;&nbsp;: ChatGPT, GitHub Copilot, Gemini</div>`,
-  projects: `<div class="term-line term-yellow">[ Projects & Achievements ]</div>
-    <div class="term-line term-out">🚀 Playwright Automation Framework (60%+ effort reduced)</div>
-    <div class="term-line term-out">🏦 Core Banking & GL Reconciliation Testing</div>
-    <div class="term-line term-out">🏆 Tech Excellence Award 2024–25</div>`,
-  contact: `<div class="term-line term-yellow">[ Contact Info ]</div>
-    <div class="term-line" style="color:#8df">📧 sharmapranjal0111@gmail.com</div>
-    <div class="term-line" style="color:#8df">📞 +91-9770247401</div>
-    <div class="term-line" style="color:#8df">💼 linkedin.com/in/pranjal-sharma-b294071aa</div>`,
-  experience: `<div class="term-line term-yellow">[ Career Timeline ]</div>
-    <div class="term-line term-out">2022–Present : QA Automation Engineer @ Bandhan Life Insurance</div>
-    <div class="term-line term-out">2022&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: MCA @ BIT Mesra (CGPA: 8.21)</div>`,
-  ls: `<div class="term-line" style="color:#9be">about.txt &nbsp;&nbsp; skills.json &nbsp;&nbsp; achievements/ &nbsp;&nbsp; resume.pdf &nbsp;&nbsp; contact.vcf</div>`,
-  date: () => `<div class="term-line term-out">${new Date().toString()}</div>`,
-};
+function getTermCmds() {
+  const term = PORTFOLIO_DATA.terminal;
+  return {
+    help: `<div class="term-line term-yellow">Available commands:</div>
+      <div class="term-line term-out">&nbsp; whoami &nbsp;&nbsp;&nbsp;— About ${PORTFOLIO_DATA.user.name.split(' ')[0]}</div>
+      <div class="term-line term-out">&nbsp; skills &nbsp;&nbsp;— Tech stack</div>
+      <div class="term-line term-out">&nbsp; projects — View projects</div>
+      <div class="term-line term-out">&nbsp; contact &nbsp;— Get in touch</div>
+      <div class="term-line term-out">&nbsp; experience— Career history</div>
+      <div class="term-line term-out">&nbsp; clear &nbsp;&nbsp;&nbsp;— Clear terminal</div>
+      <div class="term-line term-out">&nbsp; ls &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;— List files</div>
+      <div class="term-line term-out">&nbsp; date &nbsp;&nbsp;&nbsp;&nbsp;— Current date/time</div>`,
+    whoami: term.whoami.join('\\n'),
+    skills: term.skills.join('\\n'),
+    projects: term.projects.join('\\n'),
+    contact: term.contact.join('\\n'),
+    experience: term.experience.join('\\n'),
+    ls: term.ls,
+    date: () => `<div class="term-line term-out">${new Date().toString()}</div>`,
+  };
+}
 
 function handleTermInput(e) {
   if (e.key !== 'Enter') return;
@@ -407,10 +372,12 @@ function handleTermInput(e) {
   if (!cmd) return;
   const echoLine = document.createElement('div');
   echoLine.className = 'term-line';
-  echoLine.innerHTML = `<span class="term-prompt">pranjal@portfolio</span><span style="color:#fff;">:~$ </span><span class="term-cmd">${cmd}</span>`;
+  echoLine.innerHTML = `<span class="term-prompt">${PORTFOLIO_DATA.terminal.prompt}:~$ </span><span class="term-cmd">${cmd}</span>`;
   out.appendChild(echoLine);
   if (cmd === 'clear') { out.innerHTML = ''; return; }
-  const res = termCmds[cmd];
+  
+  const cmds = getTermCmds();
+  const res = cmds[cmd];
   const resultDiv = document.createElement('div');
   if (res) {
     resultDiv.innerHTML = typeof res === 'function' ? res() : res;
@@ -423,13 +390,43 @@ function handleTermInput(e) {
 
 function showShutdown() {
   closeStart();
-  if (confirm('Are you sure you want to close Pranjal\'s Portfolio?\n\nThank you for visiting! 👋')) {
+  if (confirm(`Are you sure you want to close ${PORTFOLIO_DATA.user.name.split(' ')[0]}'s Portfolio?\n\nThank you for visiting! 👋`)) {
     document.body.innerHTML = `<div style="width:100vw;height:100vh;background:#000;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:16px;">
-      <div style="color:white;font-size:20px;font-family:Segoe UI,sans-serif;">👋 Thanks for visiting Pranjal's Portfolio!</div>
+      <div style="color:white;font-size:20px;font-family:Segoe UI,sans-serif;">👋 Thanks for visiting ${PORTFOLIO_DATA.user.name}'s Portfolio!</div>
       <div style="color:#aaa;font-size:14px;font-family:Segoe UI,sans-serif;">It is now safe to close this window.</div>
     </div>`;
   }
 }
 
-// Auto-open About on load
-setTimeout(() => openWin('about'), 300);
+async function initPortfolio() {
+  const urlParams = new URLSearchParams(window.location.search);
+  let user = urlParams.get('user');
+  if (!user) {
+    const host = window.location.hostname;
+    if (host.includes('shivam')) user = 'shivam';
+    else user = 'pranjal'; // default fallback
+  }
+
+  try {
+    const res = await fetch(`${user}.json`);
+    PORTFOLIO_DATA = await res.json();
+  } catch (e) {
+    console.error("Failed to load portfolio data", e);
+    document.body.innerHTML = '<h1 style="color:white;text-align:center;margin-top:20%">Error loading portfolio data. Make sure you are running a local server.</h1>';
+    return;
+  }
+
+  // Update DOM elements
+  document.getElementById('page-title').textContent = `${PORTFOLIO_DATA.user.name} — Portfolio`;
+  document.getElementById('start-avatar').textContent = PORTFOLIO_DATA.user.avatar;
+  document.getElementById('start-name').textContent = PORTFOLIO_DATA.user.name;
+  document.getElementById('start-title').textContent = PORTFOLIO_DATA.user.title;
+
+  // Initialize UI
+  updateClock();
+  setInterval(updateClock, 1000);
+  setTimeout(() => openWin('about'), 300);
+}
+
+// Start the app
+initPortfolio();

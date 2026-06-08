@@ -1,0 +1,170 @@
+{
+  "user": {
+    "name": "Shivam Giri",
+    "avatar": "SG",
+    "role": "Software Engineer",
+    "title": "Software Engineer",
+    "location": "India",
+    "bio": "Passionate software engineer with expertise in building scalable web applications and robust backend systems. I love turning complex problems into elegant, efficient solutions — one commit at a time. Enthusiast of open-source, clean architecture, and continuous learning.",
+    "degree": "B.Tech in Computer Science",
+    "email": "shivam.giri@example.com",
+    "phone": null,
+    "linkedin": "linkedin.com/in/shivamgiri",
+    "linkedinHandle": "shivamgiri",
+    "twitter": "@shivamgiri_dev",
+    "website": "shivamgiri.dev",
+    "languages": ["English", "Hindi"],
+    "interests": ["☁️ Cloud", "🤖 AI/ML", "🔐 Security", "🎮 Game Dev", "📖 Tech Blogging", "🎸 Music"]
+  },
+  "skills": [
+    {
+      "groupTitle": "🖥️ Frontend",
+      "items": [
+        { "name": "React / Next.js", "pct": 90 },
+        { "name": "TypeScript", "pct": 85 },
+        { "name": "HTML & CSS", "pct": 92 },
+        { "name": "Vue.js", "pct": 70 }
+      ]
+    },
+    {
+      "groupTitle": "⚙️ Backend",
+      "items": [
+        { "name": "Node.js / Express", "pct": 88 },
+        { "name": "Python / Django", "pct": 80 },
+        { "name": "Go", "pct": 65 },
+        { "name": "REST & GraphQL", "pct": 85 }
+      ]
+    },
+    {
+      "groupTitle": "🗄️ Database & Cloud",
+      "items": [
+        { "name": "PostgreSQL / MySQL", "pct": 82 },
+        { "name": "MongoDB", "pct": 78 },
+        { "name": "AWS / GCP", "pct": 72 },
+        { "name": "Docker / K8s", "pct": 75 }
+      ]
+    },
+    {
+      "groupTitle": "🛠️ Tools",
+      "items": [
+        { "name": "Git / GitHub", "pct": 95 },
+        { "name": "Linux / Bash", "pct": 80 },
+        { "name": "CI/CD Pipelines", "pct": 73 }
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "icon": "🛒",
+      "name": "ShopStream",
+      "tech": "React · Node.js · MongoDB · Stripe",
+      "desc": "A full-stack e-commerce platform with real-time inventory, cart management, payment gateway integration, and an admin dashboard for analytics.",
+      "tags": ["Full-Stack", "REST API", "Auth", "Payments"]
+    },
+    {
+      "icon": "🤖",
+      "name": "ChatMatrix",
+      "tech": "Python · FastAPI · OpenAI · WebSockets",
+      "desc": "Real-time AI chat application with multi-model support, conversation memory, and streaming responses. Deployed on AWS with Docker.",
+      "tags": ["AI/ML", "WebSockets", "Docker", "AWS"]
+    },
+    {
+      "icon": "📊",
+      "name": "DataPulse",
+      "tech": "Next.js · D3.js · PostgreSQL · GraphQL",
+      "desc": "Interactive data visualization dashboard for business KPIs with customizable widgets, scheduled reports, and real-time alerts.",
+      "tags": ["Data Viz", "GraphQL", "Dashboard"]
+    },
+    {
+      "icon": "🔒",
+      "name": "VaultPass",
+      "tech": "Go · AES-256 · React Native",
+      "desc": "End-to-end encrypted password manager with zero-knowledge architecture, biometric auth, and cross-device sync via secure cloud storage.",
+      "tags": ["Security", "Encryption", "Mobile"]
+    }
+  ],
+  "experience": [
+    {
+      "role": "Senior Software Engineer",
+      "company": "TechCorp Solutions Pvt. Ltd.",
+      "period": "Jan 2023 — Present · Full-time",
+      "color": "",
+      "roleColor": "",
+      "points": [
+        "Led development of microservices architecture serving 500K+ daily active users",
+        "Reduced API response time by 40% through caching and query optimization",
+        "Mentored 4 junior engineers and conducted weekly code reviews"
+      ]
+    },
+    {
+      "role": "Software Engineer II",
+      "company": "Nexus Digital Labs",
+      "period": "Jul 2021 — Dec 2022 · Full-time",
+      "color": "",
+      "roleColor": "",
+      "points": [
+        "Built and shipped 3 major product features used by 200K+ users monthly",
+        "Migrated legacy PHP monolith to Node.js microservices",
+        "Implemented CI/CD pipelines reducing deployment time by 60%"
+      ]
+    },
+    {
+      "role": "Junior Frontend Developer",
+      "company": "Pixel Forge Studios",
+      "period": "Jun 2020 — Jun 2021 · Full-time",
+      "color": "",
+      "roleColor": "",
+      "points": [
+        "Developed React components for SaaS products with 99.9% uptime",
+        "Improved page load performance by 35% through code splitting"
+      ]
+    },
+    {
+      "role": "Software Intern",
+      "company": "StartupNest",
+      "period": "Dec 2019 — May 2020 · Internship",
+      "color": "#90d0a0",
+      "roleColor": "#2a8a4a",
+      "points": [
+        "Contributed to open-source tools and developed internal dashboards"
+      ]
+    }
+  ],
+  "terminal": {
+    "header": "Shivam Giri's Portfolio Terminal v1.0.0",
+    "prompt": "shivam@portfolio",
+    "whoami": [
+      "<div class=\"term-line term-out\">Shivam Giri — Software Engineer</div>",
+      "<div class=\"term-line\" style=\"color:#bbb;\">Full-stack developer | Open source enthusiast | India</div>",
+      "<div class=\"term-line\" style=\"color:#bbb;\">3+ years experience building scalable web apps</div>"
+    ],
+    "skills": [
+      "<div class=\"term-line term-yellow\">[ Tech Stack ]</div>",
+      "<div class=\"term-line\" style=\"color:#adf\">Frontend&nbsp;&nbsp;: React, Next.js, TypeScript, Vue.js</div>",
+      "<div class=\"term-line\" style=\"color:#adf\">Backend&nbsp;&nbsp;: Node.js, Python, Go, FastAPI</div>",
+      "<div class=\"term-line\" style=\"color:#adf\">Database : PostgreSQL, MongoDB, Redis</div>",
+      "<div class=\"term-line\" style=\"color:#adf\">Cloud&nbsp;&nbsp;&nbsp;&nbsp;: AWS, GCP, Docker, Kubernetes</div>"
+    ],
+    "projects": [
+      "<div class=\"term-line term-yellow\">[ Projects — 4 found ]</div>",
+      "<div class=\"term-line term-out\">📁 ShopStream &nbsp;&nbsp;— Full-stack e-commerce platform</div>",
+      "<div class=\"term-line term-out\">🤖 ChatMatrix &nbsp;&nbsp;— Real-time AI chat app</div>",
+      "<div class=\"term-line term-out\">📊 DataPulse &nbsp;&nbsp;&nbsp;— Analytics dashboard</div>",
+      "<div class=\"term-line term-out\">🔒 VaultPass &nbsp;&nbsp;&nbsp;— Encrypted password manager</div>"
+    ],
+    "contact": [
+      "<div class=\"term-line term-yellow\">[ Contact Info ]</div>",
+      "<div class=\"term-line\" style=\"color:#8df\">📧 shivam.giri@example.com</div>",
+      "<div class=\"term-line\" style=\"color:#8df\">🐙 github.com/shivamgiri</div>",
+      "<div class=\"term-line\" style=\"color:#8df\">💼 linkedin.com/in/shivamgiri</div>"
+    ],
+    "experience": [
+      "<div class=\"term-line term-yellow\">[ Career Timeline ]</div>",
+      "<div class=\"term-line term-out\">2023–Present : Senior SWE @ TechCorp Solutions</div>",
+      "<div class=\"term-line term-out\">2021–2022&nbsp;&nbsp;&nbsp;: SWE II @ Nexus Digital Labs</div>",
+      "<div class=\"term-line term-out\">2020–2021&nbsp;&nbsp;&nbsp;: Junior Dev @ Pixel Forge Studios</div>",
+      "<div class=\"term-line term-out\">2019–2020&nbsp;&nbsp;&nbsp;: Intern @ StartupNest</div>"
+    ],
+    "ls": "<div class=\"term-line\" style=\"color:#9be\">about.txt &nbsp;&nbsp; skills.json &nbsp;&nbsp; projects/ &nbsp;&nbsp; resume.pdf &nbsp;&nbsp; contact.vcf</div>"
+  }
+}
